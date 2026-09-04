@@ -1,0 +1,22 @@
+policy:
+  id: "bsc_suid_hardening"
+  file: "bsc_suid_hardening.yml"
+  name: "BSC SUID Hardening Validation"
+  description: "Validates that /usr/local/bin/sys-maintenance does not have the SUID bit set."
+
+requirements:
+  title: "Check that sys-maintenance exists"
+  description: "The custom lab binary must exist for this SCA validation."
+  condition: all
+  rules:
+    - 'f:/usr/local/bin/sys-maintenance'
+
+checks:
+  - id: 100300
+    title: "Ensure sys-maintenance is not SUID"
+    description: "The lab binary /usr/local/bin/sys-maintenance must not have the SUID bit set."
+    rationale: "A root-owned SUID shell can allow privilege escalation from www-data to effective root privileges."
+    remediation: "Remove the SUID bit: chmod u-s /usr/local/bin/sys-maintenance"
+    condition: none
+    rules:
+      - 'c:find /usr/local/bin/sys-maintenance -perm -4000 -print -> r:^/usr/local/bin/sys-maintenance$'

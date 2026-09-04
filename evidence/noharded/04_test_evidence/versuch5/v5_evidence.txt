@@ -1,0 +1,22 @@
+=== Vollständiger Ablauf ===
+1. Trigger: chmod 4755 um 22:35:47 UTC
+
+2. Active-Response-Log ===
+2026-09-01T22:35:47.915896+00:00 bsc-suid-generic-hardening: SUCCESS rule_id=100205 event_id=1788302147.288507 target=/usr/local/bin/sys-maintenance inode=139446 mode_before=4755 mode_after=0755 action=removed_suid
+
+3. Dateizustand nach automatischer Reaktion ===
+  File: /usr/local/bin/sys-maintenance
+  Size: 1544408   	Blocks: 3024       IO Block: 4096   regular file
+Device: 252,0	Inode: 139446      Links: 1
+Access: (0755/-rwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2026-09-01 22:35:47.921228358 +0000
+Modify: 2026-07-16 16:56:50.776247782 +0000
+Change: 2026-09-01 22:35:47.915228294 +0000
+ Birth: 2026-07-16 16:56:50.775504490 +0000
+
+4. Angriffsversuch NACH automatischer Reparatur ===
+www-data
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+
+5. Privilegierte Operation (muss scheitern) ===
+touch: cannot touch '/root/v5_should_not_work': Permission denied

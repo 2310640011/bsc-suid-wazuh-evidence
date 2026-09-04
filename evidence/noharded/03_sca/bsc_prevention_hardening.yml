@@ -1,0 +1,20 @@
+policy:
+  id: "bsc_prevention_hardening"
+  file: "bsc_prevention_hardening.yml"
+  name: "BSC Prevention Hardening Validation"
+  description: "Validates that /opt/bsc-tools is mounted with the nosuid option to prevent SUID-based privilege escalation regardless of file mode."
+requirements:
+  title: "Check that /opt/bsc-tools exists"
+  description: "The bind mount directory for the lab binary must exist for this SCA validation."
+  condition: all
+  rules:
+    - 'd:/opt/bsc-tools'
+checks:
+  - id: 100301
+    title: "Ensure /opt/bsc-tools is mounted with nosuid"
+    description: "The mount point /opt/bsc-tools must use the nosuid option so that SUID bits on contained binaries are ignored by the kernel."
+    rationale: "A nosuid mount prevents effective privilege escalation via SUID-root binaries even if the SUID bit remains set on the file itself."
+    remediation: "Remount with: mount -o remount,nosuid,bind /opt/bsc-tools"
+    condition: all
+    rules:
+      - 'c:findmnt -no OPTIONS /opt/bsc-tools -> r:nosuid'

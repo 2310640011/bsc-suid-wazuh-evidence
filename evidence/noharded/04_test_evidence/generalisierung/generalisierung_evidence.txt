@@ -1,0 +1,23 @@
+=== Vollständiger Ablauf ===
+Neue Testdatei: bsc-generic-check (SHA-256 identisch mit /bin/bash)
+Trigger: chmod 4755 um 17:46:37 UTC
+
+=== Active-Response-Log ===
+
+=== Dateizustand nach automatischer Reaktion ===
+  File: /usr/local/bin/bsc-generic-check
+  Size: 1544408   	Blocks: 3024       IO Block: 4096   regular file
+Device: 252,0	Inode: 132445      Links: 1
+Access: (0755/-rwxr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2026-09-03 17:46:37.772167090 +0000
+Modify: 2025-09-08 13:20:42.000000000 +0000
+Change: 2026-09-03 17:46:37.767167039 +0000
+ Birth: 2026-09-03 17:41:56.969504416 +0000
+
+=== Angriffsversuch NACH automatischer Reparatur ===
+www-data
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+
+=== Privilegierte Operation (muss scheitern) ===
+touch: cannot touch '/root/generic_check_should_not_work': Permission denied
+2026-09-03T17:46:37.767763+00:00 bsc-suid-generic-hardening: SUCCESS rule_id=100205 event_id=1788457597.20763 target=/usr/local/bin/bsc-generic-check inode=132445 mode_before=4755 mode_after=0755 action=removed_suid

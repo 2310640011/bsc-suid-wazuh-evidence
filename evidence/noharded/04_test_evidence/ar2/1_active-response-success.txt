@@ -1,0 +1,2 @@
+2026-08-16T13:20:07.711393+00:00 bsc-suid-generic-hardening: SUCCESS rule_id=100204 event_id=2648 target=/usr/local/bin/bsc-final-exploit inode=131516 mode_before=4755 mode_after=0755 action=removed_suid
+2026-08-16T13:20:07.733314+00:00 bsc-suid-generic-hardening: NO_CHANGE rule_id=100204 event_id=2648 target=/usr/local/bin/bsc-final-exploit inode=131516 reason=suid_already_removed

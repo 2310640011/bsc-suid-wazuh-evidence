@@ -1,0 +1,4 @@
+type=SYSCALL msg=audit(1786886407.047:2648): arch=c000003e syscall=59 success=yes exit=0 a0=602f3e2ca990 a1=602f3e2c0120 a2=602f3e2b8c60 a3=8 items=2 ppid=29385 pid=29386 auid=1000 uid=33 gid=33 euid=0 suid=0 fsuid=0 egid=33 sgid=33 fsgid=33 tty=pts2 ses=3 comm="bsc-final-explo" exe="/usr/local/bin/bsc-final-exploit" subj=unconfined key="bsc_suid_localbin"ARCH=x86_64 SYSCALL=execve AUID="lukas" UID="www-data" GID="www-data" EUID="root" SUID="root" FSUID="root" EGID="www-data" SGID="www-data" FSGID="www-data"
+type=EXECVE msg=audit(1786886407.047:2648): argc=1 a0="/usr/local/bin/bsc-final-exploit"
+type=PATH msg=audit(1786886407.047:2648): item=0 name="/usr/local/bin/bsc-final-exploit" inode=131516 dev=fc:00 mode=0104755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0OUID="root" OGID="root"
+type=PROCTITLE msg=audit(1786886407.047:2648): proctitle="/usr/local/bin/bsc-final-exploit"

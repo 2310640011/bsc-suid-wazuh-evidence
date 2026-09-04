@@ -1,0 +1,24 @@
+=== Mount-Konfiguration ===
+TARGET         SOURCE                                            FSTYPE OPTIONS
+/opt/bsc-tools /dev/mapper/ubuntu--vg-ubuntu--lv[/opt/bsc-tools] ext4   rw,nosuid,relatime
+/dev/mapper/ubuntu--vg-ubuntu--lv on /opt/bsc-tools type ext4 (rw,nosuid,relatime)
+
+=== Dateizustand (SUID weiterhin gesetzt) ===
+  File: /opt/bsc-tools/sys-maintenance
+  Size: 1544408   	Blocks: 3024       IO Block: 4096   regular file
+Device: 252,0	Inode: 524324      Links: 1
+Access: (4755/-rwsr-xr-x)  Uid: (    0/    root)   Gid: (    0/    root)
+Access: 2026-09-01 19:06:27.704659972 +0000
+Modify: 2026-07-16 16:56:50.776247782 +0000
+Change: 2026-09-01 19:06:27.692659841 +0000
+ Birth: 2026-09-01 19:06:27.675659657 +0000
+
+=== Angriffsversuch unter nosuid ===
+www-data
+uid=33(www-data) gid=33(www-data) groups=33(www-data)
+
+=== Privilegierte Dateioperation (muss scheitern) ===
+touch: cannot touch '/root/p1_should_not_work': Permission denied
+
+=== SHA256 der Datei (Kontrolle: unverändert) ===
+2986231b72a4ad6d21ce85f05f6630b6bddf2100a80fa49198c527e87eb1a6af  /opt/bsc-tools/sys-maintenance
