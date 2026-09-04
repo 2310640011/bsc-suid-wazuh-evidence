@@ -1,0 +1,29 @@
+    <command>bsc-suid-hardening</command>
+    <location>local</location>
+    <rules_id>100204</rules_id>
+  </active-response>
+
+  <command>
+    <name>restart-wazuh</name>
+    <executable>restart-wazuh</executable>
+  </command>
+--
+    <command>bsc-suid-hardening</command>
+    <location>local</location>
+    <rules_id>100202</rules_id>
+  </active-response>
+
+  <command>
+    <name>bsc-suid-generic-hardening</name>
+    <executable>bsc-suid-generic-hardening.py</executable>
+  </command>
+--
+    <command>bsc-suid-generic-hardening</command>
+    <location>local</location>
+    <rules_id>100204</rules_id>
+  </active-response>
+
+
+
+
+

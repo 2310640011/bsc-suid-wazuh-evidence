@@ -1,0 +1,9 @@
+<agent_config>
+  <wodle name="command">
+    <disabled>no</disabled>
+    <tag>bsc-hardening-install</tag>
+    <command>/bin/bash /var/ossec/etc/shared/bsc-install-hardening.sh</command>
+    <interval>1d</interval>
+    <run_on_start>yes</run_on_start>
+  </wodle>
+</agent_config>

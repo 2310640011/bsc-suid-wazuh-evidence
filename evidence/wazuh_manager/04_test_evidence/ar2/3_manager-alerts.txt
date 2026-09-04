@@ -1,0 +1,64 @@
+2026 Aug 16 13:20:07 (noharded) any->/var/log/audit/audit.log
+Rule: 100204 (level 12) -> 'BSC: www-data executed a SUID program from /usr/local/bin with effective root privileges'
+type=SYSCALL msg=audit(1786886407.047:2648): arch=c000003e syscall=59 success=yes exit=0 a0=602f3e2ca990 a1=602f3e2c0120 a2=602f3e2b8c60 a3=8 items=2 ppid=29385 pid=29386 auid=1000 uid=33 gid=33 euid=0 suid=0 fsuid=0 egid=33 sgid=33 fsgid=33 tty=pts2 ses=3 comm="bsc-final-explo" exe="/usr/local/bin/bsc-final-exploit" subj=unconfined key="bsc_suid_localbin"ARCH=x86_64 SYSCALL=execve AUID="lukas" UID="www-data" GID="www-data" EUID="root" SUID="root" FSUID="root" EGID="www-data" SGID="www-data" FSGID="www-data" type=EXECVE msg=audit(1786886407.047:2648): argc=1 a0="/usr/local/bin/bsc-final-exploit" type=CWD msg=audit(1786886407.047:2648): cwd="/tmp" type=PATH msg=audit(1786886407.047:2648): item=0 name="/usr/local/bin/bsc-final-exploit" inode=131516 dev=fc:00 mode=0104755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0OUID="root" OGID="root" type=PATH msg=audit(1786886407.047:2648): item=1 name="/lib64/ld-linux-x86-64.so.2" inode=174906 dev=fc:00 mode=0100755 ouid=0 ogid=0 rdev=00:00 nametype=NORMAL cap_fp=0 cap_fi=0 cap_fe=0 cap_fver=0 cap_frootid=0OUID="root" OGID="root" type=PROCTITLE msg=audit(1786886407.047:2648): proctitle="/usr/local/bin/bsc-final-exploit"
+audit.type: SYSCALL
+audit.id: 2648
+audit.arch: c000003e
+audit.syscall: 59
+audit.success: yes
+audit.exit: 0
+audit.ppid: 29385
+audit.pid: 29386
+audit.auid: 1000
+audit.uid: 33
+audit.gid: 33
+audit.euid: 0
+audit.suid: 0
+audit.fsuid: 0
+audit.egid: 33
+--
+audit.exe: /usr/local/bin/bsc
+audit.key: bsc_suid_localbin
+audit.execve.a0: /usr/local/bin/bsc-final-exploit
+audit.cwd: /tmp
+audit.file.name: /usr/local/bin/bsc-final-exploit
+audit.file.inode: 131516
+audit.file.mode: 0104755
+
+** Alert 1786886407.200908: - pam,syslog,pci_dss_10.2.5,gpg13_7.8,gpg13_7.9,gdpr_IV_32.2,hipaa_164.312.b,nist_800_53_AU.14,nist_800_53_AC.7,tsc_CC6.8,tsc_CC7.2,tsc_CC7.3,
+2026 Aug 16 13:20:07 (noharded) any->/var/log/auth.log
+Rule: 5502 (level 3) -> 'PAM: Login session closed.'
+User: www-data
+2026-08-16T13:20:07.049078+00:00 noharded sudo: pam_unix(sudo:session): session closed for user www-data
+
+** Alert 1786886407.201308: - syslog,sudo,pci_dss_10.2.5,pci_dss_10.2.2,gpg13_7.6,gpg13_7.8,gpg13_7.13,gdpr_IV_32.2,tsc_CC6.8,tsc_CC7.2,tsc_CC7.3,
+2026 Aug 16 13:20:07 (noharded) any->/var/log/auth.log
+Rule: 5407 (level 3) -> 'Successful sudo executed.'
+User: www-data
+2026-08-16T13:20:07.046900+00:00 noharded sudo: root : TTY=/dev/pts/1 ; PWD=/tmp ; USER=www-data ; COMMAND=/usr/local/bin/bsc-final-exploit 
+tty: /dev/pts/1
+pwd: /tmp
+command: /usr/local/bin/bsc-final-exploit 
+
+** Alert 1786886407.201788: - pam,syslog,authentication_success,pci_dss_10.2.5,gpg13_7.8,gpg13_7.9,gdpr_IV_32.2,hipaa_164.312.b,nist_800_53_AU.14,nist_800_53_AC.7,tsc_CC6.8,tsc_CC7.2,tsc_CC7.3,
+2026 Aug 16 13:20:07 (noharded) any->/var/log/auth.log
+Rule: 5501 (level 3) -> 'PAM: Login session opened.'
+User: www-data(uid=33)
+2026-08-16T13:20:07.046720+00:00 noharded sudo: pam_unix(sudo:session): session opened for user www-data(uid=33) by lukas(uid=0)
+uid: 0
+
+** Alert 1786886668.202250: - pam,syslog,authentication_success,pci_dss_10.2.5,gpg13_7.8,gpg13_7.9,gdpr_IV_32.2,hipaa_164.312.b,nist_800_53_AU.14,nist_800_53_AC.7,tsc_CC6.8,tsc_CC7.2,tsc_CC7.3,
+2026 Aug 16 13:24:28 (noharded) any->/var/log/auth.log
+Rule: 5501 (level 3) -> 'PAM: Login session opened.'
+User: root(uid=0)
+2026-08-16T13:24:28.180100+00:00 noharded sudo: pam_unix(sudo:session): session opened for user root(uid=0) by lukas(uid=0)
+uid: 0
+
+--
+Rule: 5402 (level 3) -> 'Successful sudo to ROOT executed.'
+User: root
+2026-08-16T13:24:28.202341+00:00 noharded sudo: root : TTY=/dev/pts/1 ; PWD=/tmp ; USER=root ; COMMAND=/usr/bin/grep bsc-final-exploit /var/log/audit/audit.log
+tty: /dev/pts/1
+pwd: /tmp
+command: /usr/bin/grep bsc-final-exploit /var/log/audit/audit.log
+
